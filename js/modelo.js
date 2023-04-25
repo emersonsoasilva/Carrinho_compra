@@ -9,7 +9,7 @@ let modeloJson = [
     },
     {
       id: 2,
-      name: 'Camiseta amarela',
+      name: 'Camiseta Amarela',
       img: 'img/camisetaAM.jpg',
       price: 18.0,
       sizes: ['algodão', 'malha', 'dry'],

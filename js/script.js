@@ -6,7 +6,7 @@ modeloJson.map((item, index) => {
     let modeloItem = c('.models .modelo-item').cloneNode(true);
 
     modeloItem.querySelector('.modelo-item-name').innerHTML = item.name;
-
+    modeloItem.querySelector('.modelo-item-desc').innerHTML = item.description;
 
     c('.modelo-area').append(modeloItem);
 })

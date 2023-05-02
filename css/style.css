@@ -1,52 +1,74 @@
-* {
+*{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: "Hepta Slab", "Lato" serif, Arial;
-  font-family: "Lato", sans-serif, Arial;
-  background-color: rebeccapurple;
+body{
+  background-color: #eee;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  color: white;
   display: flex;
   margin: 0;
-  min-height: 100vh; /*responsividade*/
+  min-height: 100vh; 
 }
-
 main{
   flex: 1;
   padding: 20px;
+}
+h1{
+  font-family: "Poppins", Roboto;
+  text-align: center;
+}
 
+header{
+  display: none;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 60px;
+  position: fixed;
+  background-color: #388bc5;
+  align-items: center;
+}
+
+.menu-oppener{
+  margin-right: 15px;
+  font-size: 26px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+.menu-oppener span{
+  margin-right: 10px;
+}
+.menu-close{
+  width: 32px;
+  height: 32px;
+  display: none;
+  font-size: 30px;
 
 }
 
-header {
+.modeloWindowArea{
   display: none;
 }
-
-.cart-area {
+.menu-close{
   display: none;
 }
-
-.modeloWindowArea {
-  display: none;
-}
-
 .models {
   display: none;
 }
 
-.modelo-area {
+.modelo-area{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.modelo-item {
+.modelo-item{
   text-align: center;
-  max-width: 250px;
-  font-family: "Hepta Slab", Helvetica, Arial;
+  max-width: 250px;   
+  font-family: 'Poppins', sans-serif;
   margin: 0 auto 50px auto;
 }
 
@@ -60,52 +82,106 @@ header {
 .modelo-item-img{
   width: 200px;
   height: 200px;
-  background-color: rebeccapurple;
-
+  background-color: #eee;
+  border-radius: 15%; /*arredonda a foto*/
+  padding: 10px;
 }
 
-.modelo-item-img img{
+.modelo-item-img img {
   width: 100%;
   height: auto;
   border-radius: 10%;
   box-shadow: 0px 10px 50px rgb(0, 0, 0, 0.2);
+
 }
 
-.modelo-item-add {
+.modelo-item-add{
   width: 50px;
   height: 50px;
   line-height: 50px;
   border-radius: 25px;
-  background-color: antiquewhite;
+  background-color: #388bc5;
   text-align: center;
-  color:black;
+  color: #fff;
   font-size: 22px;
   cursor: pointer;
   transition: all ease 0.2s;
 }
 
-.modelo-item a:hover .modelo-item-add {
-  background-color: black;
-  color:antiquewhite;
-
+.modelo-item a:hover .modelo-item-add{
+  background-color: #244c88;
 }
 
-.modelo-item-price {
+.modelo-item-price{
   font-size: 15px;
-  color:azure;
-  margin-top: 10px;
-  font-weight: bold;
+  color: #333;
+  margin-top: 10px; /*espaçamento do valor$ para o botão*/
 }
 
-.modelo-item-name {
+.modelo-item-name{
   font-size: 20px;
-  font-weight: bolder;
-  color: black;
+  font-weight: bold;
+  color: #000;
   margin-top: 10px;
 }
+
 .modelo-item-desc{
   font-size: 13px;
-  padding: 5px;
-  color: ivory;
+  color: #555;
   margin-top: 10px;
+}
+
+aside{
+  background-color: #9ccbe6;
+  width: 0vw;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-area{
+  padding: 20px;
+}
+
+.modeloWindowArea {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(255, 255, 255, 0.5);
+  /*display: none;  (não mostra na tela) */
+  justify-content: center; 
+  align-items: center;
+  overflow-y: auto;
+}
+
+/*Media Queries*/
+@media(max-width: 1000px){
+  .modelo-area{
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 840px){
+  header{
+      display: flex;
+  }
+  main{
+      padding-top: 60px;
+  }
+  aside{
+      width: auto;
+      position: fixed;
+      left: 100vw;
+      right: 0;
+      top: 0;
+      bottom: 0;
+  }
+  .cart-area {
+      width: 100vw;
+  }
+  .menu-close {
+      display: block;
+  }
+
+
 }

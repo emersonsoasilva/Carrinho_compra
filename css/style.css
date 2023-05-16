@@ -80,6 +80,9 @@ main {
 }
 h1 {
   font-family: "Hepta Slab", Helvetica, Arial;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 header {

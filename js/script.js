@@ -1,3 +1,5 @@
+let modalQt = 1;
+
 const c = (el) => document.querySelector(el);
 const cs = (el) => document.querySelectorAll(el);
 
@@ -13,23 +15,26 @@ modeloJson.map((item, index) => {
     modeloItem.querySelector('.modelo-item-price').innerHTML = `R$ ${item.price.toFixed(2)}`;
 
     modeloItem.querySelector('a').addEventListener('click', (e) => {
-        
         e.preventDefault();
 
         let key = e.target.closest('.modelo-item').getAttribute('data-key');
-
+        modalQt = 1;
+        
         c('.modeloBig img').src = modeloJson[key].img;
-
         c('.modeloInfo h1').innerHTML = modeloJson[key].name;
         c('.modeloInfo-desc').innerHTML = modeloJson[key].description;
-
         c('.modeloInfo-actualPrice').innerHTML = `R$ ${modeloJson[key].price.toFixed(2)}`;
+        c('.modeloInfo-size.selected').classList.remove('selected');
 
         cs('.modeloInfo-size').forEach((size, sizeIndex) => {
+            if (sizeIndex == 0){
+                size.classList.add('selected');
+            }
             size.querySelector('span').innerHTML = modeloJson[key].sizes[sizeIndex];
         });
-        c('.modeloWindowArea').style.opacity = 0;
 
+        c('.modeloInfo-qt').innerHTML = modalQt;
+        c('.modeloWindowArea').style.opacity = 0;
         c('.modeloWindowArea').style.display = 'flex';
 
         setTimeout(() =>{
@@ -40,3 +45,43 @@ modeloJson.map((item, index) => {
     c('.modelo-area').append(modeloItem);
 });
 
+//eventos Modal
+function closeModal(){
+    c('.modeloWindowArea').style.opacity = 0;
+    setTimeout(()=>{
+        c('.modeloWindowArea').style.display = 'none';
+    }, 200);
+}
+
+cs('.modeloInfo-cancelButton, .modeloInfo-cancelMobileButton').forEach((item)=>{
+    item.addEventListener('click', closeModal);
+});
+
+//Botão qtd menos
+
+c('.modeloInfo-qtmenos').addEventListener('click', () => {
+    if (modalQt > 1){
+        modalQt--;
+        c('.modeloInfo-qt').innerHTML = modalQt
+    }
+});
+
+//Botão qtd mais
+
+c('.modeloInfo-qtmais').addEventListener('click', () => {
+    modalQt++;
+    //atualiza o valor no html
+    c('.modeloInfo-qt').innerHTML = modalQt
+});
+
+//tamanhos
+
+cs('.modeloInfo-size').forEach((size, sizeIndex) => {
+    //ao clicar em um item
+    size.addEventListener('click', () => {
+        //desmarca tudo
+        c('.modeloInfo-size.selected').classList.remove('selected');
+        //adiciono a marcação
+        size.classList.add('selected');
+    });
+});
